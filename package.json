@@ -1,0 +1,25 @@
+{
+  "name": "workshop-slides-template",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "slidev",
+    "dev": "./scripts/dev.sh",
+    "build": "./scripts/build-all.sh",
+    "export": "slidev export",
+    "preview": "npx vite preview --outDir dist"
+  },
+  "dependencies": {
+    "@slidev/cli": "52.10.1",
+    "@slidev/theme-default": "0.25.0",
+    "@workshops.de/slidev-theme": "1.2.3",
+    "slidev-addon-tldraw": "0.4.2",
+    "slidev-addon-window-mockup": "0.3.0",
+    "vue": "3.5.25"
+  },
+  "devDependencies": {
+    "playwright-chromium": "1.57.0",
+    "prettier": "3.7.4",
+    "prettier-plugin-slidev": "1.0.5"
+  }
+}

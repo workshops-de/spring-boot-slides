@@ -1,0 +1,32 @@
+# Lesson configuration for repository import
+# This file defines the lesson metadata that will be synced to the platform
+
+name: Advanced Concepts
+position: 2
+
+# Trainer (use email or slug to match existing trainer)
+trainer: trainer@workshops.de
+
+# Code repository (for StackBlitz, diffs, etc.)
+github_code_url: https://github.com/workshops-de/example-code-repo
+git_tag_starting: main
+
+# Presentation type: "google_slides" or "slidev"
+slides_type: slidev
+
+# For Google Slides (uncomment if using Google Slides)
+# google_slide_id: "1NmeNH96Qj9jqwrHJ4axQEH7_1ptbkZPjQlLZ4jyWWg"
+
+# For Slidev (slides_url is auto-generated from repository during import)
+# slides_url will be set automatically based on GitHub Pages URL
+
+# PDF sync (works for both Google Slides and Slidev)
+pdf_generation_enabled: true
+
+# Playground options
+stackblitz_enabled: true
+codesandbox_enabled: false
+
+# Status
+deprecated: false
+

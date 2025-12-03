@@ -1,0 +1,106 @@
+# Task Configuration
+title: "Observer Pattern Implementation"
+position: 1
+category: "Design Patterns"
+preparation: false
+estimated_time_in_minutes: 20
+always_unlocked: true
+
+# Content
+body_markdown: |
+  ## Overview
+
+  In this task, you will implement the Observer pattern from scratch. This pattern is fundamental for building reactive systems and event-driven architectures.
+
+  ## Objectives
+
+  1. Create a type-safe Observer interface
+  2. Implement a Subject class that manages observers
+  3. Test the notification flow
+  4. Handle edge cases
+
+  ## Instructions
+
+  ### Step 1: Define the Interfaces
+
+  Create a new file `src/patterns/observer.ts`:
+
+  ```typescript
+  export interface Observer<T> {
+    update(data: T): void;
+  }
+
+  export interface Subject<T> {
+    subscribe(observer: Observer<T>): void;
+    unsubscribe(observer: Observer<T>): void;
+    notify(data: T): void;
+  }
+  ```
+
+  ### Step 2: Implement the Subject
+
+  ```typescript
+  export class EventEmitter<T> implements Subject<T> {
+    private observers: Set<Observer<T>> = new Set();
+
+    subscribe(observer: Observer<T>): void {
+      // Add observer to the set
+    }
+
+    unsubscribe(observer: Observer<T>): void {
+      // Remove observer from the set
+    }
+
+    notify(data: T): void {
+      // Call update on all observers
+    }
+  }
+  ```
+
+  ### Step 3: Create Test Observers
+
+  ```typescript
+  const logger: Observer<string> = {
+    update: (message) => console.log('[LOG]', message)
+  };
+
+  const counter: Observer<string> = {
+    update: () => { count++; }
+  };
+  ```
+
+  ### Step 4: Test Your Implementation
+
+  ```typescript
+  const emitter = new EventEmitter<string>();
+
+  emitter.subscribe(logger);
+  emitter.subscribe(counter);
+
+  emitter.notify('Hello World!');
+  // Should log: [LOG] Hello World!
+  // count should be: 1
+
+  emitter.unsubscribe(logger);
+  emitter.notify('Second message');
+  // Should NOT log anything
+  // count should be: 2
+  ```
+
+  ## Bonus Challenges
+
+  1. **Prevent duplicates**: Ensure the same observer can't subscribe twice
+  2. **Add `once()`**: Create a method that auto-unsubscribes after first notification
+  3. **Error handling**: What happens if an observer throws? Should it stop other observers?
+
+  ## Success Criteria
+
+  - [ ] Observer interface defined with generic type
+  - [ ] Subject class implements all three methods
+  - [ ] Multiple observers receive notifications
+  - [ ] Unsubscribe correctly removes observers
+  - [ ] No memory leaks (observers are properly removed)
+
+# Git Integration
+git_tag_completed: solution-observer-pattern
+

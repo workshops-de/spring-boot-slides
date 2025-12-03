@@ -1,0 +1,90 @@
+# Task Configuration
+title: "Second Task - Implementation"
+position: 2
+category: "Implementation"
+preparation: false
+estimated_time_in_minutes: 20
+always_unlocked: false
+
+# Content
+body_markdown: |
+  ## Overview
+
+  Now that your environment is set up, let's implement the core functionality.
+
+  ## Objectives
+
+  1. Create a new service class
+  2. Implement the main method
+  3. Add error handling
+  4. Write a simple test
+
+  ## Instructions
+
+  ### Step 1: Create the Service
+
+  Create a new file `src/services/example.service.ts`:
+
+  ```typescript
+  export class ExampleService {
+    process(input: string): string {
+      // Your implementation here
+    }
+  }
+  ```
+
+  ### Step 2: Implement the Logic
+
+  The `process` method should:
+  - Accept a string input
+  - Transform it (e.g., uppercase)
+  - Return the result
+
+  ### Step 3: Add Error Handling
+
+  Handle edge cases:
+  - Empty string input
+  - Null/undefined input
+
+  ### Step 4: Test Your Implementation
+
+  ```typescript
+  const service = new ExampleService();
+  console.log(service.process('hello')); // Should output: 'HELLO'
+  ```
+
+  ## Hints
+
+  <details>
+  <summary>💡 Hint 1: Basic Implementation</summary>
+
+  ```typescript
+  process(input: string): string {
+    return input.toUpperCase();
+  }
+  ```
+
+  </details>
+
+  <details>
+  <summary>💡 Hint 2: Error Handling</summary>
+
+  ```typescript
+  if (!input) {
+    throw new Error('Input is required');
+  }
+  ```
+
+  </details>
+
+  ## Success Criteria
+
+  - [ ] Service class created
+  - [ ] Process method implemented
+  - [ ] Error handling added
+  - [ ] Basic test passes
+
+# Git Integration
+git_tag_completed: solution-02-second-task
+
+
