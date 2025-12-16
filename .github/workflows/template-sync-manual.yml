@@ -39,6 +39,5 @@ jobs:
         with:
           source_repo_path: workshops-de/workshop-slides-template
           upstream_branch: ${{ github.event.inputs.upstream_branch || 'main' }}
-          pr_labels: ${{ github.event.inputs.pr_labels || 'template-sync,automated,manual' }}
           template_sync_ignore_file_path: .templatesyncignore
           is_dry_run: ${{ github.event.inputs.dry_run || false }}

@@ -35,8 +35,5 @@ jobs:
           # Branch to sync from
           upstream_branch: main
 
-          # Pull request settings
-          pr_labels: template-sync,automated
-
           # Ignore file path
           template_sync_ignore_file_path: .templatesyncignore
