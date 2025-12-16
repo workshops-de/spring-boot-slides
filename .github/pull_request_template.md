@@ -1,9 +1,11 @@
 # Pull Request
 
 ## Description
+
 <!-- Describe your changes in detail -->
 
 ## Type of Change
+
 <!-- Mark the relevant option with an "x" -->
 
 - [ ] 🐛 Bug fix (non-breaking change which fixes an issue)
@@ -15,6 +17,7 @@
 - [ ] ♻️ Code refactoring
 
 ## Checklist
+
 <!-- Mark completed items with an "x" -->
 
 - [ ] I have tested my changes locally
@@ -23,6 +26,7 @@
 - [ ] I have checked for any breaking changes
 
 ## For Template Sync PRs
+
 <!-- Only fill this out if this is a template sync PR -->
 
 - [ ] I have reviewed all changes from the template
@@ -32,8 +36,11 @@
 - [ ] I have verified all lessons still work correctly
 
 ## Screenshots (if applicable)
+
 <!-- Add screenshots to help explain your changes -->
 
 ## Additional Notes
-<!-- Any additional information that reviewers should know -->
 
+<!--
+Any additional information that reviewers should know
+-->

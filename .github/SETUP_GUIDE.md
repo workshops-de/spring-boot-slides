@@ -13,11 +13,13 @@ Your repository is now configured to automatically sync with the upstream templa
 Two workflows were created:
 
 #### **Automatic Sync** (`.github/workflows/template-sync.yml`)
+
 - Runs every Monday at 3 AM UTC
 - Can be triggered manually
 - Creates a PR when template changes are detected
 
 #### **Manual Sync** (`.github/workflows/template-sync-manual.yml`)
+
 - Provides more control over sync options
 - Allows choosing specific branches
 - Supports dry-run mode
@@ -25,6 +27,7 @@ Two workflows were created:
 ### 2. Ignore File (`.templatesyncignore`)
 
 Protects your custom content from being overwritten:
+
 - ✅ Your lessons are safe
 - ✅ Your custom slides are safe
 - ✅ Your configuration files are safe
@@ -62,11 +65,13 @@ This will test the sync without waiting for the schedule.
 ### Step 3: Review the First Sync PR
 
 When the action runs, it will:
+
 1. Compare your repo with the template
 2. Create a PR if differences are found
 3. Label it with `template-sync` and `automated`
 
 Review the PR carefully to ensure:
+
 - No custom content was affected
 - Changes make sense
 - No conflicts exist
@@ -101,6 +106,7 @@ cat ~/.ssh/template-sync-key.pub
 ```
 
 Then:
+
 1. Go to template repository
 2. Settings → Deploy keys → Add deploy key
 3. Paste the public key
@@ -116,6 +122,7 @@ cat ~/.ssh/template-sync-key
 ```
 
 Then:
+
 1. Go to **your** repository
 2. Settings → Secrets and variables → Actions
 3. Click "New repository secret"
@@ -128,6 +135,7 @@ Then:
 **Edit `.github/workflows/template-sync.yml`:**
 
 Add the SSH key (source_repo_path is already in the correct format):
+
 ```yaml
 source_repo_path: workshops-de/workshop-slides-template
 source_repo_ssh_private_key: ${{ secrets.TEMPLATE_SYNC_SSH_KEY }}
@@ -139,7 +147,7 @@ source_repo_ssh_private_key: ${{ secrets.TEMPLATE_SYNC_SSH_KEY }}
 
 ```yaml
 schedule:
-  - cron: '0 3 * * 1'  # Current: Every Monday at 3 AM UTC
+  - cron: '0 3 * * 1' # Current: Every Monday at 3 AM UTC
 ```
 
 **Common schedules:**
@@ -174,6 +182,7 @@ special-lesson/
 **Example: Sync package.json but not package-lock.json**
 
 Remove this line from `.templatesyncignore`:
+
 ```
 package-lock.json
 ```
@@ -214,6 +223,7 @@ package-lock.json
 **Cause**: Template changed a file you also modified
 
 **Solution**:
+
 ```bash
 # Checkout the PR branch
 git fetch origin
@@ -230,6 +240,7 @@ git push origin template-sync-<timestamp>
 ### Problem: Workflow Not Running
 
 **Checks**:
+
 1. Go to Actions tab
 2. Check if workflows are enabled
 3. Check for error messages
@@ -238,6 +249,7 @@ git push origin template-sync-<timestamp>
 ### Problem: SSH Permission Denied
 
 **Solutions**:
+
 1. Verify SSH key is added to template repository
 2. Verify private key is in GitHub Secrets
 3. Try HTTPS instead (for public repos)
@@ -245,6 +257,7 @@ git push origin template-sync-<timestamp>
 ### Problem: Custom File Was Overwritten
 
 **Solution**:
+
 1. Add the file to `.templatesyncignore`
 2. Restore from git history:
    ```bash
@@ -279,4 +292,3 @@ If you encounter issues:
 ---
 
 **Happy syncing! 🚀**
-

@@ -5,6 +5,7 @@ This repository uses [actions-template-sync](https://github.com/AndreasAugustin/
 ## 🔄 How It Works
 
 The GitHub Action automatically syncs changes from the template repository:
+
 - **Template Repository**: `git@github.com:workshops-de/workshop-slides-template.git`
 - **Sync Schedule**: Every Monday at 3 AM UTC
 - **Manual Trigger**: Available via GitHub Actions UI
@@ -54,10 +55,11 @@ Edit `.github/workflows/template-sync.yml`:
 
 ```yaml
 schedule:
-  - cron: '0 3 * * 1'  # Every Monday at 3 AM UTC
+  - cron: '0 3 * * 1' # Every Monday at 3 AM UTC
 ```
 
 Common schedules:
+
 - Daily: `'0 3 * * *'`
 - Weekly (Monday): `'0 3 * * 1'`
 - Monthly (1st): `'0 3 1 * *'`
@@ -88,6 +90,7 @@ No additional setup required for public repositories!
 If the template repository is private, you need to set up SSH authentication:
 
 1. **Generate SSH key pair**:
+
    ```bash
    ssh-keygen -t ed25519 -C "template-sync" -f template-sync-key
    ```
@@ -118,6 +121,7 @@ If the template repository is private, you need to set up SSH authentication:
 ### Merge Conflicts
 
 **Solution**:
+
 1. Checkout the PR branch locally
 2. Resolve conflicts manually
 3. Push the resolved changes
@@ -129,6 +133,7 @@ If the template repository is private, you need to set up SSH authentication:
 ### Sync Not Running
 
 **Solution**:
+
 - Check Actions tab for errors
 - Verify workflow file syntax
 - Ensure GitHub Actions are enabled for the repository
@@ -147,4 +152,3 @@ If you need to modify the sync behavior:
 2. Update `.templatesyncignore` if needed
 3. Test with manual trigger
 4. Document changes in this file
-
