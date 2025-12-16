@@ -12,6 +12,10 @@ on:
   repository_dispatch:
     types: [template-sync]
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   sync:
     runs-on: ubuntu-latest
@@ -39,13 +43,12 @@ jobs:
           pr_branch_name_prefix: template-sync-
 
           # Pull request settings
-          pr_title: "chore: sync with template repository"
+          pr_title: 'chore: sync with template repository'
           pr_labels: template-sync,automated
-          pr_commit_msg: "chore: sync with template"
+          pr_commit_msg: 'chore: sync with template'
 
           # GitHub token for creating PRs (updated parameter name)
           source_gh_token: ${{ secrets.GITHUB_TOKEN }}
 
           # Ignore file path (updated parameter name)
           template_sync_ignore_file_path: .templatesyncignore
-

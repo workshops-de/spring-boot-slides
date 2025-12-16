@@ -72,6 +72,39 @@ source_repo_ssh_private_key: ${{ secrets.TEMPLATE_SYNC_SSH_KEY }}
 
 ---
 
+### ❌ Error: "does not have permission to update the pull request"
+
+**Error Message:**
+
+```
+github-actions[bot] does not have permission to update the pull request
+pull request update failed: GraphQL: github-actions[bot] does not have permission
+```
+
+**Cause:** Workflow missing required permissions to create/update PRs.
+
+**Solution:** ✅ Already fixed! The workflows now include:
+
+```yaml
+permissions:
+  contents: write
+  pull-requests: write
+```
+
+**If still having issues, check repository settings:**
+
+1. Go to Settings → Actions → General
+2. Under "Workflow permissions":
+   - Select "Read and write permissions"
+   - ✅ Enable "Allow GitHub Actions to create and approve pull requests"
+3. Save changes
+
+**The PR was already created at:** https://github.com/workshops-de/spring-boot-slides/pull/2
+
+You can merge it manually, and future runs will work correctly with the updated permissions.
+
+---
+
 ### ❌ Error: "Permission denied (publickey)"
 
 **Error Message:**

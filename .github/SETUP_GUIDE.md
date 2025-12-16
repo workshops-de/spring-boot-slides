@@ -41,7 +41,17 @@ Protects your custom content from being overwritten:
 
 ## 🚀 Getting Started
 
-### Step 1: Verify the Setup
+### Step 1: Verify Repository Permissions
+
+Ensure GitHub Actions can create PRs:
+
+1. Go to **Settings** → **Actions** → **General**
+2. Under "Workflow permissions":
+   - Select **"Read and write permissions"**
+   - ✅ Enable **"Allow GitHub Actions to create and approve pull requests"**
+3. Click **Save**
+
+### Step 2: Verify the Setup
 
 Check that the workflows are present:
 
@@ -52,7 +62,7 @@ ls -la .github/workflows/
 # - template-sync-manual.yml
 ```
 
-### Step 2: Test Manual Sync
+### Step 3: Test Manual Sync
 
 1. Go to your repository on GitHub
 2. Click **Actions** tab
@@ -62,7 +72,7 @@ ls -la .github/workflows/
 
 This will test the sync without waiting for the schedule.
 
-### Step 3: Review the First Sync PR
+### Step 4: Review the First Sync PR
 
 When the action runs, it will:
 
