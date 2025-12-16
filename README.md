@@ -46,9 +46,15 @@ Open http://localhost:3030 to see your slides.
 │       │       └── task.md          # Exercise slide
 │       └── tasks/                   # Task definitions (synced to platform)
 │           ├── 01-first-task/
-│           │   └── task.yml
+│           │   ├── task.yml         # Task metadata
+│           │   ├── body.md          # Main description
+│           │   ├── hint.md          # Hints (optional)
+│           │   └── trainer_hint.md  # Trainer notes (optional)
 │           └── 02-second-task/
 │               ├── task.yml
+│               ├── body.md
+│               ├── hint.md
+│               ├── bonus.md         # Bonus challenges (optional)
 │               └── assets/          # Task-specific images
 └── .cursor/
     └── rules/
@@ -86,6 +92,7 @@ Create `lessons/02-new-lesson/02-new-lesson.md` with the Slidev frontmatter.
 ### 4. Add Topic Slides
 
 Create the 4-MAT structure:
+
 - `slides/topic-name/why.md`
 - `slides/topic-name/what.md`
 - `slides/topic-name/how.md`
@@ -94,7 +101,39 @@ Create the 4-MAT structure:
 
 ### 5. Add Tasks
 
-Create `tasks/01-task-name/task.yml` for each exercise.
+Create a task folder with `task.yml` for metadata and separate `.md` files for content:
+
+```
+tasks/01-task-name/
+├── task.yml           # Metadata (title, position, category, etc.)
+├── body.md            # Main task description
+├── hint.md            # Hints for participants (optional)
+├── bonus.md           # Bonus challenges (optional)
+├── trainer_hint.md    # Notes for trainers (optional)
+└── assets/            # Task-specific images (optional)
+```
+
+**task.yml** - Only metadata:
+
+```yaml
+title: 'Task Title'
+position: 1
+category: 'Basics'
+preparation: false
+estimated_time_in_minutes: 15
+always_unlocked: false
+git_tag_completed: solution-01-task-name
+```
+
+**body.md** - Main task description with full Markdown support.
+
+**hint.md** - Collapsible hints using `<details>` tags.
+
+**bonus.md** - Additional challenges for fast learners.
+
+**trainer_hint.md** - Notes visible only to trainers (common issues, time estimates, discussion points).
+
+> **Note**: You can also include markdown content directly in `task.yml` using `body_markdown`, `hint_markdown`, etc., but separate files are recommended for better readability and editor support.
 
 ### 6. Update Build Script
 
@@ -122,23 +161,23 @@ Add dev/build scripts:
 
 Each topic follows the 4-MAT learning cycle:
 
-| Phase | Purpose | Content |
-|-------|---------|---------|
-| **WHY** | Connection | Why this matters, real-world problems |
-| **WHAT** | Conceptual | Core concepts, theory, definitions |
-| **HOW** | Practice | Step-by-step implementation |
-| **WHAT IF** | Creative | Edge cases, alternatives, extensions |
+| Phase       | Purpose    | Content                               |
+| ----------- | ---------- | ------------------------------------- |
+| **WHY**     | Connection | Why this matters, real-world problems |
+| **WHAT**    | Conceptual | Core concepts, theory, definitions    |
+| **HOW**     | Practice   | Step-by-step implementation           |
+| **WHAT IF** | Creative   | Edge cases, alternatives, extensions  |
 
 ## 📦 Available Scripts
 
-| Script | Description |
-|--------|-------------|
-| `npm run dev` | Start development server |
-| `npm run dev:01` | Start dev server for lesson 01 |
-| `npm run build` | Build all lessons |
-| `npm run build:01` | Build lesson 01 only |
-| `npm run export` | Export slides to PDF |
-| `npm run preview` | Preview built slides |
+| Script             | Description                    |
+| ------------------ | ------------------------------ |
+| `npm run dev`      | Start development server       |
+| `npm run dev:01`   | Start dev server for lesson 01 |
+| `npm run build`    | Build all lessons              |
+| `npm run build:01` | Build lesson 01 only           |
+| `npm run export`   | Export slides to PDF           |
+| `npm run preview`  | Preview built slides           |
 
 ## 🔗 Platform Integration
 
@@ -154,16 +193,6 @@ This template is designed to work with the workshops.de platform:
 2. Enable sync for the course
 3. The platform will automatically import lessons and tasks
 
-## 🔄 Template Sync
-
-This repository automatically syncs with the [workshop-slides-template](https://github.com/workshops-de/workshop-slides-template) to receive updates:
-
-- **Automatic Sync**: Runs every Monday at 3 AM UTC
-- **Manual Sync**: Available via GitHub Actions
-- **Protected Content**: Your lessons and custom content are protected from being overwritten
-
-For more details, see [Template Sync Documentation](.github/TEMPLATE_SYNC.md).
-
 ## 🎨 Customization
 
 ### Theme
@@ -172,7 +201,7 @@ Change the theme in your slide frontmatter:
 
 ```yaml
 ---
-theme: seriph  # or: default, apple-basic, etc.
+theme: seriph # or: default, apple-basic, etc.
 ---
 ```
 
@@ -190,5 +219,3 @@ Use [UnoCSS](https://unocss.dev/) classes directly in your slides.
 ## 📄 License
 
 MIT
-
-
