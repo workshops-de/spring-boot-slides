@@ -34,14 +34,10 @@ node_modules/
 # GitHub workflows (optional - remove this line if you want to sync workflows)
 .github/workflows/
 
-# Lock files (you might want to sync package-lock.json, remove if needed)
-package-lock.json
-
 # Custom scripts (if you've modified them)
 # scripts/
 
 # Deployment configs (if customized)
-netlify.toml
 vercel.json
 
 # Custom images
