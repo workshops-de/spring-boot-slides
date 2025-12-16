@@ -26,11 +26,11 @@ jobs:
       - name: Run template sync
         uses: AndreasAugustin/actions-template-sync@v2
         with:
-          # Source template repository (SSH format)
-          source_repo_path: git@github.com:workshops-de/workshop-slides-template.git
+          # Source template repository (owner/repo format works for both public and private repos)
+          source_repo_path: workshops-de/workshop-slides-template
 
-          # Use HTTPS if you don't have SSH deploy keys configured
-          # source_repo_path: https://github.com/workshops-de/workshop-slides-template.git
+          # For private repos, add SSH key:
+          # source_repo_ssh_private_key: ${{ secrets.TEMPLATE_SYNC_SSH_KEY }}
 
           # Branch to sync from (default is main)
           upstream_branch: main
@@ -43,13 +43,9 @@ jobs:
           pr_labels: template-sync,automated
           pr_commit_msg: "chore: sync with template"
 
-          # SSH key for private template repositories
-          # Uncomment if using SSH and template is private
-          # ssh_private_key: ${{ secrets.TEMPLATE_SYNC_SSH_KEY }}
+          # GitHub token for creating PRs (updated parameter name)
+          source_gh_token: ${{ secrets.GITHUB_TOKEN }}
 
-          # GitHub token for creating PRs
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-
-          # Ignore file path
-          pr_ignore_file: .templatesyncignore
+          # Ignore file path (updated parameter name)
+          template_sync_ignore_file_path: .templatesyncignore
 

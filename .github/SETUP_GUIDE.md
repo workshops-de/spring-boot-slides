@@ -73,20 +73,15 @@ Review the PR carefully to ensure:
 
 ## 🔧 Configuration Options
 
-### Option 1: Use HTTPS Instead of SSH
+### Option 1: Default Configuration (Already Set Up)
 
-If you're syncing from a **public** template repository, HTTPS is simpler:
-
-**Edit `.github/workflows/template-sync.yml`:**
+The workflows use the simple `owner/repo` format which works for both public and private repositories:
 
 ```yaml
-source_repo_path: https://github.com/workshops-de/workshop-slides-template.git
+source_repo_path: workshops-de/workshop-slides-template
 ```
 
-**Remove this line:**
-```yaml
-# ssh_private_key: ${{ secrets.TEMPLATE_SYNC_SSH_KEY }}
-```
+This is the recommended approach as it's clean and works universally. For public repos, no additional setup is needed!
 
 ### Option 2: Use SSH for Private Templates
 
@@ -132,9 +127,10 @@ Then:
 
 **Edit `.github/workflows/template-sync.yml`:**
 
-Uncomment this line:
+Add the SSH key (source_repo_path is already in the correct format):
 ```yaml
-ssh_private_key: ${{ secrets.TEMPLATE_SYNC_SSH_KEY }}
+source_repo_path: workshops-de/workshop-slides-template
+source_repo_ssh_private_key: ${{ secrets.TEMPLATE_SYNC_SSH_KEY }}
 ```
 
 ### Option 3: Change Sync Schedule

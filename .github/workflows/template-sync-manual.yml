@@ -34,13 +34,13 @@ jobs:
       - name: Run template sync
         uses: AndreasAugustin/actions-template-sync@v2
         with:
-          source_repo_path: git@github.com:workshops-de/workshop-slides-template.git
+          source_repo_path: workshops-de/workshop-slides-template
           upstream_branch: ${{ github.event.inputs.upstream_branch || 'main' }}
           pr_branch_name_prefix: template-sync-manual-
           pr_title: "chore: manual sync with template repository"
           pr_labels: ${{ github.event.inputs.pr_labels || 'template-sync,automated,manual' }}
           pr_commit_msg: "chore: manual sync with template"
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          pr_ignore_file: .templatesyncignore
+          source_gh_token: ${{ secrets.GITHUB_TOKEN }}
+          template_sync_ignore_file_path: .templatesyncignore
           is_dry_run: ${{ github.event.inputs.dry_run || false }}
 

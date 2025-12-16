@@ -57,10 +57,18 @@ These are automatically protected:
 
 ## ⚙️ Quick Configuration
 
-### Switch to HTTPS (Public Template)
+### Default Configuration (Already Set)
 ```yaml
 # .github/workflows/template-sync.yml
-source_repo_path: https://github.com/workshops-de/workshop-slides-template.git
+source_repo_path: workshops-de/workshop-slides-template
+source_gh_token: ${{ secrets.GITHUB_TOKEN }}
+```
+
+### Add SSH for Private Template
+```yaml
+# .github/workflows/template-sync.yml
+source_repo_path: workshops-de/workshop-slides-template
+source_repo_ssh_private_key: ${{ secrets.TEMPLATE_SYNC_SSH_KEY }}
 ```
 
 ### Change Schedule

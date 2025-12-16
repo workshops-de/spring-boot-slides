@@ -14,6 +14,7 @@ This directory contains GitHub-specific configuration files for the repository.
 ├── QUICK_REFERENCE.md             # Quick reference for common tasks
 ├── SETUP_GUIDE.md                 # Detailed setup instructions
 ├── TEMPLATE_SYNC.md               # Complete template sync documentation
+├── TROUBLESHOOTING.md             # Common errors and solutions
 ├── pull_request_template.md       # PR template with checklists
 └── README.md                      # This file
 ```
@@ -79,6 +80,12 @@ For details: **[TEMPLATE_SYNC.md](TEMPLATE_SYNC.md)**
 - Manual sync instructions
 - Advanced configuration
 
+### Troubleshooting
+Having issues? **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)**
+- Common errors and solutions
+- Debugging steps
+- Prevention tips
+
 ### Changes Overview
 What was added: **[CHANGES_SUMMARY.md](CHANGES_SUMMARY.md)**
 - All files created
@@ -143,29 +150,45 @@ schedule:
   - cron: '0 3 * * 1'  # Every Monday 3 AM UTC
 ```
 
-### Switch to HTTPS (Public Template)
-Edit `workflows/template-sync.yml`:
+### Default Configuration
+Already configured in `workflows/template-sync.yml`:
 ```yaml
-source_repo_path: https://github.com/workshops-de/workshop-slides-template.git
+source_repo_path: workshops-de/workshop-slides-template
+source_gh_token: ${{ secrets.GITHUB_TOKEN }}
+```
+
+### Add SSH for Private Template
+Edit `workflows/template-sync.yml` to add:
+```yaml
+source_repo_ssh_private_key: ${{ secrets.TEMPLATE_SYNC_SSH_KEY }}
 ```
 
 ## 🔍 Troubleshooting
 
-### Workflow Not Running
-1. Check Actions tab is enabled
-2. Verify workflow file syntax
-3. Check repository permissions
+### Common Issues
 
-### Sync Creates Conflicts
-1. Checkout PR branch
-2. Resolve conflicts manually
-3. Push resolved changes
+See **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)** for detailed solutions to:
+- Deprecated parameter warnings ✅ Fixed
+- Repository URL format errors ✅ Fixed
+- Permission denied errors
+- Merge conflicts
+- Workflow not running
+- Custom files overwritten
 
-### Custom File Overwritten
-1. Add file to `.templatesyncignore`
-2. Restore from git history
+### Quick Fixes
 
-For more help, see [TEMPLATE_SYNC.md](TEMPLATE_SYNC.md#-troubleshooting).
+**Workflow Not Running:**
+- Check Actions tab is enabled
+- Verify workflow file syntax
+
+**Sync Creates Conflicts:**
+- Checkout PR branch locally
+- Resolve conflicts manually
+- Push resolved changes
+
+**Custom File Overwritten:**
+- Add file to `.templatesyncignore`
+- Restore from git history
 
 ## 📊 Workflow Diagram
 

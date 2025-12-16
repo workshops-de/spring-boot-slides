@@ -72,6 +72,17 @@ my-custom-file.md
 custom-directory/
 ```
 
+### Default Configuration
+
+The workflow uses the simple `owner/repo` format, which works for both public and private repositories:
+
+```yaml
+source_repo_path: workshops-de/workshop-slides-template
+source_gh_token: ${{ secrets.GITHUB_TOKEN }}
+```
+
+No additional setup required for public repositories!
+
 ### Using SSH for Private Templates
 
 If the template repository is private, you need to set up SSH authentication:
@@ -91,20 +102,12 @@ If the template repository is private, you need to set up SSH authentication:
    - Create `TEMPLATE_SYNC_SSH_KEY`
    - Paste the private key content
 
-4. **Uncomment in workflow**:
+4. **Update workflow** (`.github/workflows/template-sync.yml`):
    ```yaml
-   ssh_private_key: ${{ secrets.TEMPLATE_SYNC_SSH_KEY }}
+   # Add SSH key (source_repo_path is already correct):
+   source_repo_path: workshops-de/workshop-slides-template
+   source_repo_ssh_private_key: ${{ secrets.TEMPLATE_SYNC_SSH_KEY }}
    ```
-
-### Using HTTPS Instead of SSH
-
-If you prefer HTTPS (for public templates):
-
-Edit `.github/workflows/template-sync.yml`:
-
-```yaml
-source_repo_path: https://github.com/workshops-de/workshop-slides-template.git
-```
 
 ## 🔍 Troubleshooting
 
