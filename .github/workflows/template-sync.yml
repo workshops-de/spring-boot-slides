@@ -24,19 +24,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
       - name: Run template sync
         uses: AndreasAugustin/actions-template-sync@v2
         with:
-          # Source template repository (owner/repo format works for both public and private repos)
+          # Source template repository (owner/repo format)
           source_repo_path: workshops-de/workshop-slides-template
 
-          # For private repos, add SSH key:
-          # source_repo_ssh_private_key: ${{ secrets.TEMPLATE_SYNC_SSH_KEY }}
-
-          # Branch to sync from (default is main)
+          # Branch to sync from
           upstream_branch: main
 
           # Target branch in this repository
@@ -47,8 +43,5 @@ jobs:
           pr_labels: template-sync,automated
           pr_commit_msg: 'chore: sync with template'
 
-          # GitHub token for creating PRs (updated parameter name)
-          source_gh_token: ${{ secrets.GITHUB_TOKEN }}
-
-          # Ignore file path (updated parameter name)
+          # Ignore file path
           template_sync_ignore_file_path: .templatesyncignore

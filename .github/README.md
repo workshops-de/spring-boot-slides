@@ -10,7 +10,7 @@ This directory contains GitHub-specific configuration files for the repository.
 │   ├── deploy.yml                 # Deploy slides to GitHub Pages
 │   ├── template-sync.yml          # Automatic template sync (scheduled)
 │   └── template-sync-manual.yml   # Manual template sync (on-demand)
-├── CHANGES_SUMMARY.md             # Summary of template sync setup
+├── ENABLE_PERMISSIONS.md          # ⚠️ START HERE - Enable Actions permissions
 ├── QUICK_REFERENCE.md             # Quick reference for common tasks
 ├── SETUP_GUIDE.md                 # Detailed setup instructions
 ├── TEMPLATE_SYNC.md               # Complete template sync documentation
@@ -22,38 +22,47 @@ This directory contains GitHub-specific configuration files for the repository.
 ## 🔄 Workflows
 
 ### 1. Deploy Pages (`deploy.yml`)
+
 **Purpose**: Build and deploy slides to GitHub Pages
 
 **Triggers**:
+
 - Push to `main` branch
 - Manual via workflow_dispatch
 
 **Actions**:
+
 1. Install dependencies
 2. Build all slides
 3. Export PDFs
 4. Deploy to GitHub Pages
 
 ### 2. Template Sync (`template-sync.yml`)
+
 **Purpose**: Automatically sync with template repository
 
 **Triggers**:
+
 - Schedule: Every Monday at 3 AM UTC
 - Manual via workflow_dispatch
 - Repository dispatch webhook
 
 **Actions**:
+
 1. Fetch template changes
 2. Apply `.templatesyncignore` rules
 3. Create PR if changes detected
 
 ### 3. Template Sync Manual (`template-sync-manual.yml`)
+
 **Purpose**: Manual sync with advanced options
 
 **Triggers**:
+
 - Manual via workflow_dispatch (with inputs)
 
 **Options**:
+
 - Choose source branch
 - Custom PR labels
 - Dry-run mode
@@ -61,63 +70,68 @@ This directory contains GitHub-specific configuration files for the repository.
 ## 📚 Documentation Files
 
 ### Quick Start
+
 Start here: **[QUICK_REFERENCE.md](QUICK_REFERENCE.md)**
+
 - Common commands
 - Quick configuration snippets
 - Troubleshooting quick fixes
 
 ### Setup & Configuration
+
 For setup: **[SETUP_GUIDE.md](SETUP_GUIDE.md)**
+
 - Step-by-step setup instructions
 - Configuration options
 - SSH vs HTTPS setup
 - Detailed troubleshooting
 
 ### Complete Reference
+
 For details: **[TEMPLATE_SYNC.md](TEMPLATE_SYNC.md)**
+
 - How template sync works
 - Protected files explanation
 - Manual sync instructions
 - Advanced configuration
 
 ### Troubleshooting
+
 Having issues? **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)**
+
 - Common errors and solutions
 - Debugging steps
 - Prevention tips
 
-### Changes Overview
-What was added: **[CHANGES_SUMMARY.md](CHANGES_SUMMARY.md)**
-- All files created
-- Configuration summary
-- Verification checklist
-
 ## 🎯 Quick Links
 
-| Task | Action |
-|------|--------|
-| **Manual Sync** | Actions → Template Sync (Manual) → Run workflow |
-| **Check Sync Status** | Actions → Template Sync → View runs |
-| **Review Sync PR** | Pull Requests → Filter by `template-sync` label |
-| **Deploy Slides** | Automatic on push to main |
-| **View Deployed Slides** | Settings → Pages → Visit site |
+| Task                     | Action                                          |
+| ------------------------ | ----------------------------------------------- |
+| **Manual Sync**          | Actions → Template Sync (Manual) → Run workflow |
+| **Check Sync Status**    | Actions → Template Sync → View runs             |
+| **Review Sync PR**       | Pull Requests → Filter by `template-sync` label |
+| **Deploy Slides**        | Automatic on push to main                       |
+| **View Deployed Slides** | Settings → Pages → Visit site                   |
 
 ## 🛡️ Template Sync Protection
 
 The following content is protected from template sync:
 
 ✅ **Your Content**
+
 - `lessons/` - All your custom lessons
 - `00-index.md` - Your custom index
 - `sources.md` - Your sources
 - `slides.md` - Your slides
 
 ✅ **Configuration**
+
 - `netlify.toml` - Deployment config
 - `vercel.json` - Deployment config
 - `.env*` - Environment files
 
 ✅ **Build Artifacts**
+
 - `node_modules/` - Dependencies
 - `dist/` - Build output
 - `*.log` - Log files
@@ -127,6 +141,7 @@ See `.templatesyncignore` for complete list.
 ## 🔧 Common Tasks
 
 ### Test Template Sync Locally
+
 ```bash
 # Fetch and checkout sync PR
 git fetch origin
@@ -138,27 +153,34 @@ npm run dev
 ```
 
 ### Protect Additional Files
+
 ```bash
 # Add to .templatesyncignore
 echo "my-custom-file.md" >> ../.templatesyncignore
 ```
 
 ### Change Sync Schedule
+
 Edit `workflows/template-sync.yml`:
+
 ```yaml
 schedule:
-  - cron: '0 3 * * 1'  # Every Monday 3 AM UTC
+  - cron: '0 3 * * 1' # Every Monday 3 AM UTC
 ```
 
 ### Default Configuration
+
 Already configured in `workflows/template-sync.yml`:
+
 ```yaml
 source_repo_path: workshops-de/workshop-slides-template
 source_gh_token: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 ### Add SSH for Private Template
+
 Edit `workflows/template-sync.yml` to add:
+
 ```yaml
 source_repo_ssh_private_key: ${{ secrets.TEMPLATE_SYNC_SSH_KEY }}
 ```
@@ -168,6 +190,7 @@ source_repo_ssh_private_key: ${{ secrets.TEMPLATE_SYNC_SSH_KEY }}
 ### Common Issues
 
 See **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)** for detailed solutions to:
+
 - Deprecated parameter warnings ✅ Fixed
 - Repository URL format errors ✅ Fixed
 - Permission denied errors
@@ -178,15 +201,18 @@ See **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)** for detailed solutions to:
 ### Quick Fixes
 
 **Workflow Not Running:**
+
 - Check Actions tab is enabled
 - Verify workflow file syntax
 
 **Sync Creates Conflicts:**
+
 - Checkout PR branch locally
 - Resolve conflicts manually
 - Push resolved changes
 
 **Custom File Overwritten:**
+
 - Add file to `.templatesyncignore`
 - Restore from git history
 
@@ -243,7 +269,6 @@ When modifying workflows or sync configuration:
 1. Test changes with manual trigger
 2. Update relevant documentation
 3. Update this README if structure changes
-4. Document in [CHANGES_SUMMARY.md](CHANGES_SUMMARY.md)
 
 ## 📞 Support
 
@@ -257,4 +282,3 @@ Need help?
 ---
 
 **For quick help, start with [QUICK_REFERENCE.md](QUICK_REFERENCE.md)**
-
