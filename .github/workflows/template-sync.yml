@@ -35,13 +35,8 @@ jobs:
           # Branch to sync from
           upstream_branch: main
 
-          # Target branch in this repository
-          pr_branch_name_prefix: template-sync-
-
           # Pull request settings
-          pr_title: 'chore: sync with template repository'
           pr_labels: template-sync,automated
-          pr_commit_msg: 'chore: sync with template'
 
           # Ignore file path
           template_sync_ignore_file_path: .templatesyncignore

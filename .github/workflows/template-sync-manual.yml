@@ -39,10 +39,6 @@ jobs:
         with:
           source_repo_path: workshops-de/workshop-slides-template
           upstream_branch: ${{ github.event.inputs.upstream_branch || 'main' }}
-          pr_branch_name_prefix: template-sync-manual-
-          pr_title: "chore: manual sync with template repository"
           pr_labels: ${{ github.event.inputs.pr_labels || 'template-sync,automated,manual' }}
-          pr_commit_msg: "chore: manual sync with template"
           template_sync_ignore_file_path: .templatesyncignore
           is_dry_run: ${{ github.event.inputs.dry_run || false }}
-
