@@ -10,10 +10,6 @@ on:
         description: 'Template branch to sync from'
         required: false
         default: 'main'
-      pr_labels:
-        description: 'PR labels (comma-separated)'
-        required: false
-        default: 'template-sync,automated'
       dry_run:
         description: 'Dry run (no PR created)'
         required: false
