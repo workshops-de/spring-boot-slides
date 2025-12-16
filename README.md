@@ -154,6 +154,16 @@ This template is designed to work with the workshops.de platform:
 2. Enable sync for the course
 3. The platform will automatically import lessons and tasks
 
+## 🔄 Template Sync
+
+This repository automatically syncs with the [workshop-slides-template](https://github.com/workshops-de/workshop-slides-template) to receive updates:
+
+- **Automatic Sync**: Runs every Monday at 3 AM UTC
+- **Manual Sync**: Available via GitHub Actions
+- **Protected Content**: Your lessons and custom content are protected from being overwritten
+
+For more details, see [Template Sync Documentation](.github/TEMPLATE_SYNC.md).
+
 ## 🎨 Customization
 
 ### Theme

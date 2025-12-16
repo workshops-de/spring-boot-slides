@@ -1,0 +1,46 @@
+name: Template Sync (Manual)
+
+# This workflow allows you to manually sync with the template
+# and choose specific options
+
+on:
+  workflow_dispatch:
+    inputs:
+      upstream_branch:
+        description: 'Template branch to sync from'
+        required: false
+        default: 'main'
+      pr_labels:
+        description: 'PR labels (comma-separated)'
+        required: false
+        default: 'template-sync,automated'
+      dry_run:
+        description: 'Dry run (no PR created)'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Run template sync
+        uses: AndreasAugustin/actions-template-sync@v2
+        with:
+          source_repo_path: git@github.com:workshops-de/workshop-slides-template.git
+          upstream_branch: ${{ github.event.inputs.upstream_branch || 'main' }}
+          pr_branch_name_prefix: template-sync-manual-
+          pr_title: "chore: manual sync with template repository"
+          pr_labels: ${{ github.event.inputs.pr_labels || 'template-sync,automated,manual' }}
+          pr_commit_msg: "chore: manual sync with template"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          pr_ignore_file: .templatesyncignore
+          is_dry_run: ${{ github.event.inputs.dry_run || false }}
+

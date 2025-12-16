@@ -1,0 +1,49 @@
+# Template Sync Ignore File
+# Files and directories listed here will NOT be synced from the template
+# This protects your custom content from being overwritten
+
+# Lesson content (your custom slides)
+lessons/
+
+# Custom index
+00-index.md
+
+# Custom sources
+sources.md
+
+# Custom slides
+slides.md
+
+# Build artifacts
+dist/
+node_modules/
+*.log
+
+# Environment files
+.env
+.env.local
+
+# IDE settings
+.vscode/
+.idea/
+
+# Git files
+.git/
+.gitignore
+
+# GitHub workflows (optional - remove this line if you want to sync workflows)
+.github/workflows/
+
+# Lock files (you might want to sync package-lock.json, remove if needed)
+package-lock.json
+
+# Custom scripts (if you've modified them)
+# scripts/
+
+# Deployment configs (if customized)
+netlify.toml
+vercel.json
+
+# Custom images
+og-image.png
+
