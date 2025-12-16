@@ -10,7 +10,6 @@ This directory contains GitHub-specific configuration files for the repository.
 │   ├── deploy.yml                 # Deploy slides to GitHub Pages
 │   ├── template-sync.yml          # Automatic template sync (scheduled)
 │   └── template-sync-manual.yml   # Manual template sync (on-demand)
-├── ENABLE_PERMISSIONS.md          # ⚠️ START HERE - Enable Actions permissions
 ├── QUICK_REFERENCE.md             # Quick reference for common tasks
 ├── SETUP_GUIDE.md                 # Detailed setup instructions
 ├── TEMPLATE_SYNC.md               # Complete template sync documentation
