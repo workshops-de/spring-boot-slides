@@ -15,7 +15,7 @@
     "@workshops.de/slidev-theme": "1.2.3",
     "slidev-addon-tldraw": "0.5.1",
     "slidev-addon-window-mockup": "0.3.0",
-    "vue": "3.5.25"
+    "vue": "3.5.26"
   },
   "devDependencies": {
     "playwright-chromium": "1.57.0",
