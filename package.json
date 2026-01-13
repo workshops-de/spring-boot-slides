@@ -10,7 +10,7 @@
     "preview": "npx vite preview --outDir dist"
   },
   "dependencies": {
-    "@slidev/cli": "52.11.0",
+    "@slidev/cli": "52.11.3",
     "@slidev/theme-default": "0.25.0",
     "@workshops.de/slidev-theme": "1.2.3",
     "slidev-addon-tldraw": "0.5.1",
