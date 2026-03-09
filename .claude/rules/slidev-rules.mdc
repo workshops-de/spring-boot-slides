@@ -1,0 +1,151 @@
+---
+description: Rules for creating slidev pages
+globs:
+alwaysApply: true
+---
+
+## Structure
+
+- Each topic gets its own file, which gets linked in `/slides.md`
+- Each topic file is saved in /pages/{topic}/{name-of-the-topic}.md
+- A topic can consist of the files (see 4-mat principle)
+  - why.md
+  - how.md
+  - what.md
+  - task.md
+  - what-if.md
+- Each topic starts with a cover slide
+- Each topic ends with a task slide (also a cover with the title of the respective exercise)
+
+### Example
+
+```
+/
+├── slides.md                   # Main slides file
+├── sources.md                  # Sources of the presentation
+├── pages/                      # Topic organization
+│   ├── introduction/           # Topic folder
+│   ├── components/             # Topic folder
+│   └── services/               # Topic folder
+│       ├── why.md              # Topic file
+│       ├── how.md              # Topic file
+│       ├── what.md             # Topic file
+│       ├── task.md             # Topic file
+│       └── what-if.md          # Topic file
+├── components/                 # Reusable slide components
+├── snippets/                   # Code snippets
+└── assets/                     # Images and media
+```
+
+### Link in slides.md
+
+```md
+---
+src: ./pages/introduction/welcome.md
+---
+```
+
+## Slide
+
+### Basics
+
+- The front matter where settings of the slide are defined has 3 `-` above and 3 `-` below
+- The analysed code dictates the content.
+  - ifthe resarch finds more content it is mentioned in the outlook as interesting topic
+- All sources used to generate the slides are collected in its own slide-deck `sources.md`
+  - Each slide in `sources.md` can habe up to 5 sources listed
+- Avoid HTML if possible
+- Only use it for specialities and use https://unocss.dev/, if needed
+- Prefer Markdown over custom HTML for lists
+- Prefer HTML over Markdown when it comes to info boxes highlighting important statements
+
+### Example
+
+```md
+---
+layout: default
+---
+```
+
+### Text
+
+- List text should fit in one line
+- Text should not flow over slide
+- Be clear and concise
+- Avoid content duplications
+
+### Images in Slides
+
+- If the Slide has a list or text, prefer 2-column layout
+  - one column contains the text/list, the other an image
+- Search for images that match the text/list contents online (eg. https://unsplash.com)
+
+### Code Example in slide
+
+- Never use more than 2 Code-Blocks in one Slide
+- Never nest markdown code blocks inside HTML, due to parsing issues
+- Prefer one code example per slide instead of have multiple
+- Prefer simple code examples (a method)
+- Use comment blocks /_ ... _/ to omit unimportant code lines
+- Prefer code examples from 1-10 lines
+- If code examples are longer than 10 lines avoid adding other elements on the slide (put them in the next slide)
+- For comparison 2 code examples next to each other are fine
+- Annotate each codeblock with correct programming language
+- Embrace @Shiki to highlight important parts of the code
+- Code should not fall out of the slide (overflow)
+- Use line numbers if code examples have more than 4 lines
+- If the code doesn't fit into one slide, you use the maxHeight to set a fixed height and enable scrolling:
+
+```ts {2|3|7|12}{maxHeight:'100px'}
+// Example maxHeight
+function add(a: Ref<number> | number, b: Ref<number> | number) {
+  return computed(() => unref(a) + unref(b));
+}
+/// ...as many lines as you want
+const c = add(1, 2);
+```
+
+### Mermaid
+
+- Use mermaid graphs for processes & flows
+
+## Layouts
+
+- If a layout repeats during slide, create a new slidev layout and reuse it for other slides
+
+## Didactics
+
+- Ensure each module follows the 4-MAT learning cycle
+
+### 4-MAT Teaching Structure
+
+For each major concept identified in the commits, structure the learning using the 4-MAT system:
+
+1. **WHY (Connection)** - 25% of content
+   - Begin with why this Angular feature/approach matters
+   - Connect to real-world problems it solves
+   - Use concrete examples from the codebase to demonstrate pain points addressed
+   - Appeal to intuition and personal meaning
+
+2. **WHAT (Conceptual)** - 25% of content
+   - Present the core concepts and facts
+   - Show code from the repository that implements these concepts
+   - Provide clear explanations of how the feature works in Angular
+   - Present the theoretical foundation behind the implementation
+
+3. **HOW (Practice)** - 25% of content
+   - Show step-by-step application in code examples from the repository
+   - Create exercises based on actual commit changes
+   - Demonstrate implementation patterns and best practices as seen in the code
+   - Guide through practical application scenarios
+
+4. **WHAT IF (Creative Application)** - 25% of content
+   - Explore extensions and variations of the concepts
+   - Discuss edge cases and how to handle them
+   - Encourage creative problem-solving using the learned concepts
+   - Show alternative approaches or future possibilities
+
+## Quality
+
+- Double check if all files/slides are reachable (are the paths correct)
+- Check for empty slides and remove them
