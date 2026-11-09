@@ -30,10 +30,9 @@ lessons/
     │       ├── what.md
     │       ├── how.md
     │       ├── what-if.md
-    │       └── task.md
+    │       ├── task.md
+    │       └── assets/             # Images for this topic, referenced as ./assets/...
     └── tasks/
-public/
-└── 02-llm-introduction/            # Images, referenced as /02-llm-introduction/...
 ```
 
 ### Linking topic files in the entry file
@@ -77,6 +76,21 @@ A few repositories hold one single deck instead of lessons (e.g. `ai-software-en
 src: ./pages/services/why.md
 ---
 ```
+
+### Addons and public files
+
+- Addons are enabled once for the whole repository in `package.json`
+  (`"slidev": { "addons": ["window-mockup", "slidev-addon-tldraw"] }`), so every deck gets them. A deck
+  does not need an `addons:` list in its headmatter.
+- Images go into an `assets/` folder next to the slide file and are referenced relatively
+  (`![Diagram](./assets/diagram.svg)`). Vite bundles them and adds the deck's base path, so they work
+  locally and on GitHub Pages.
+- Files that need a fixed URL (e.g. tldraw documents) belong in the **lesson's own** `public/`
+  folder, `lessons/<NN-name>/public/`. Slidev uses the lesson folder as the deck root, so a `public/`
+  folder in the repository root is only served for root decks such as `slides.md`.
+- tldraw drawings (`<tldraw doc="…">`) work in `npm run dev`, but not on GitHub Pages: the addon loads
+  the document from the domain root and ignores the deck's base path. For slides that must show a
+  drawing on the published site, export it as SVG and embed it as an image.
 
 Code highlighting, Mermaid, shortcuts and styles come from the theme; do not add `setup/` or `styles/`
 folders to the repository.
