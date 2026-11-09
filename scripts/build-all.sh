@@ -116,5 +116,38 @@ cat > dist/index.html << EOF
 EOF
 echo -e "${GREEN}Created${RESET} dist/index.html (redirects to ${REDIRECT_URL})"
 
+# Create root 404.html so deep links like /<deck>/presenter/1 work on GitHub Pages.
+# Pages only serves the 404.html at the site root, but each deck is a separate SPA in
+# its own subfolder (Slidev's own 404.html lands in dist/<deck>/ and is never used).
+# This page loads the matching deck's index.html in place, so the URL stays intact and
+# the deck's router opens the requested route.
+cat > dist/404.html << EOF
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Loading…</title>
+  <script>
+    (function () {
+      var base = '${BASE_PREFIX}/';
+      var path = location.pathname;
+      var deck = path.indexOf(base) === 0 ? path.slice(base.length).split('/')[0] : '';
+      function notFound() {
+        document.title = 'Not found';
+        document.body.innerHTML = '<h1>404</h1><p><a href="' + base + '">Back to the overview</a></p>';
+      }
+      if (!deck) { document.addEventListener('DOMContentLoaded', notFound); return; }
+      fetch(base + deck + '/index.html')
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+        .then(function (html) { document.open(); document.write(html); document.close(); })
+        .catch(notFound);
+    })();
+  </script>
+</head>
+<body></body>
+</html>
+EOF
+echo -e "${GREEN}Created${RESET} dist/404.html (loads the matching deck for deep links)"
+
 echo ""
 echo -e "${CYAN}Build complete!${RESET}"
