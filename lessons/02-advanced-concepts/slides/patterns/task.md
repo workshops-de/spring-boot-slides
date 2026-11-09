@@ -101,3 +101,4 @@ class: text-center
 <div class="mt-12 text-gray-400">
   Solution: <code>git checkout solution-observer-pattern</code>
 </div>
+
