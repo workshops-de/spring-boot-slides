@@ -19,6 +19,6 @@
     "@workshops.de/slidev-theme": "2.3.0"
   },
   "devDependencies": {
-    "@workshops.de/slidev-toolkit": "^1.1.2"
+    "@workshops.de/slidev-toolkit": "^1.1.3"
   }
 }
