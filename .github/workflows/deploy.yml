@@ -31,9 +31,6 @@ jobs:
       - name: Install dependencies
         run: nci
 
-      - name: Install Playwright for PDF export
-        run: npx playwright install chromium
-
       - name: Build slides and export PDFs
         run: ./scripts/build-all.sh --base /${{github.event.repository.name}}
 
