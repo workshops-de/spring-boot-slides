@@ -1,6 +1,10 @@
 {
   "name": "workshop-slides-template",
   "type": "module",
+  "engines": {
+    "node": ">=24",
+    "npm": ">=11"
+  },
   "private": true,
   "scripts": {
     "start": "slidev",
