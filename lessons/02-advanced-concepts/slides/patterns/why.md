@@ -70,4 +70,3 @@ class UserRepository {
 <div class="mt-8 p-4 bg-blue-500 bg-opacity-20 rounded-lg">
   <strong>💡 Key Insight:</strong> Patterns provide a shared vocabulary and proven solutions.
 </div>
-

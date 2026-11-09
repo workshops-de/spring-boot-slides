@@ -21,6 +21,6 @@ Collection of sources used in this workshop
 - [Resource 1](https://example.com/resource1)
 - [Resource 2](https://example.com/resource2)
 
-<!-- Add more source slides as needed -->
-
-
+<!--
+Add more source slides as needed
+-->

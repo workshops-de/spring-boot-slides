@@ -83,4 +83,3 @@ class Subject {
   notify(data: any) { /* ... */ }
 }
 ```
-

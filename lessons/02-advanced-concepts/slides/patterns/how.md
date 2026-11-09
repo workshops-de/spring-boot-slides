@@ -101,4 +101,3 @@ userEvents.notify(currentUser);
 - Pub/sub messaging
 
 </div>
-

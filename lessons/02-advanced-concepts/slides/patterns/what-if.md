@@ -110,4 +110,3 @@ const processUser = pipe(
 
 await processUser(userData);
 ```
-

@@ -116,5 +116,3 @@ console.log('Enhanced result:', result);
 <div class="text-center mt-8">
   <strong>Stay updated:</strong> Follow the official documentation for new releases
 </div>
-
-
