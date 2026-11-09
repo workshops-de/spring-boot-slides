@@ -46,13 +46,13 @@ graph TD
 
 # Common Patterns Overview
 
-| Pattern | Category | Purpose |
-|---------|----------|---------|
-| **Singleton** | Creational | Ensure single instance |
-| **Factory** | Creational | Create objects without specifying class |
-| **Observer** | Behavioral | Notify dependents of state changes |
-| **Strategy** | Behavioral | Encapsulate interchangeable algorithms |
-| **Decorator** | Structural | Add behavior dynamically |
+| Pattern       | Category   | Purpose                                 |
+| ------------- | ---------- | --------------------------------------- |
+| **Singleton** | Creational | Ensure single instance                  |
+| **Factory**   | Creational | Create objects without specifying class |
+| **Observer**  | Behavioral | Notify dependents of state changes      |
+| **Strategy**  | Behavioral | Encapsulate interchangeable algorithms  |
+| **Decorator** | Structural | Add behavior dynamically                |
 
 <br>
 
@@ -79,8 +79,11 @@ interface Observer {
 class Subject {
   private observers: Observer[] = [];
 
-  subscribe(observer: Observer) { /* ... */ }
-  notify(data: any) { /* ... */ }
+  subscribe(observer: Observer) {
+    /* ... */
+  }
+  notify(data: any) {
+    /* ... */
+  }
 }
 ```
-

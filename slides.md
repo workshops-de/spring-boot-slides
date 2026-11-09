@@ -11,7 +11,7 @@ transition: slide-left
 mdc: true
 seoMeta:
   ogImage: auto
-theme: "@workshops.de/slidev-theme"
+theme: '@workshops.de/slidev-theme'
 addons:
   - window-mockup
   - slidev-addon-tldraw

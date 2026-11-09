@@ -64,11 +64,11 @@ console.log(result);
 
 # Key Terminology
 
-| Term | Definition |
-|------|------------|
-| **Term 1** | Brief definition of the first term |
+| Term       | Definition                          |
+| ---------- | ----------------------------------- |
+| **Term 1** | Brief definition of the first term  |
 | **Term 2** | Brief definition of the second term |
-| **Term 3** | Brief definition of the third term |
+| **Term 3** | Brief definition of the third term  |
 
 <br>
 

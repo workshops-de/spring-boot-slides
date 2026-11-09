@@ -41,9 +41,15 @@ As applications grow, developers face:
 class UserManager {
   private users = [];
 
-  add(user) { /* ... */ }
-  remove(user) { /* ... */ }
-  notify(message) { /* ... */ }
+  add(user) {
+    /* ... */
+  }
+  remove(user) {
+    /* ... */
+  }
+  notify(message) {
+    /* ... */
+  }
 }
 ```
 
@@ -58,8 +64,12 @@ class UserManager {
 class UserRepository {
   private store: Store<User>;
 
-  save(user: User) { /* ... */ }
-  delete(id: string) { /* ... */ }
+  save(user: User) {
+    /* ... */
+  }
+  delete(id: string) {
+    /* ... */
+  }
 }
 ```
 
@@ -70,4 +80,3 @@ class UserRepository {
 <div class="mt-8 p-4 bg-blue-500 bg-opacity-20 rounded-lg">
   <strong>💡 Key Insight:</strong> Patterns provide a shared vocabulary and proven solutions.
 </div>
-

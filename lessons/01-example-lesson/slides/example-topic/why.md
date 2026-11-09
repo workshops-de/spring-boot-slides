@@ -26,13 +26,13 @@ Without this concept, developers face:
 
 # Real-World Example
 
-
 ````md magic-move
 ```typescript
 function oldWay() {
   return result;
 }
 ```
+
 ```typescript
 const newWay = () => result;
 ```

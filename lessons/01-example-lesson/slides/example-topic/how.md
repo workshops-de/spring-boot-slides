@@ -20,7 +20,7 @@ import { Feature } from 'library';
 // Configure the feature
 const config = {
   option1: true,
-  option2: 'value'
+  option2: 'value',
 };
 
 // Initialize
@@ -46,7 +46,9 @@ class ExampleService {
     return this.transform(input);
   }
 
-  private transform(data: string): Result { /* ... */ }
+  private transform(data: string): Result {
+    /* ... */
+  }
 }
 ```
 
@@ -61,7 +63,7 @@ Connect everything together:
 ```typescript
 // In your main file
 const service = new ExampleService({
-  option1: true
+  option1: true,
 });
 
 // Use the service
@@ -112,7 +114,7 @@ Best for: Quick prototypes
 // For complex scenarios
 const result = await advanced({
   input,
-  options: { deep: true }
+  options: { deep: true },
 });
 ```
 
@@ -121,5 +123,3 @@ Best for: Production apps
 </div>
 
 </div>
-
-

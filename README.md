@@ -153,13 +153,13 @@ Each topic follows the 4-MAT learning cycle:
 
 ## 📦 Available Scripts
 
-| Script                | Description                                    |
-| --------------------- | ---------------------------------------------- |
-| `npm run dev`         | Start development server (lesson menu)         |
-| `npm run dev -- 01`   | Start dev server for lesson 01                 |
-| `npm run build`       | Build all lessons and export PDFs into `dist/` |
-| `npm run export`      | Export slides to PDF                           |
-| `npm run preview`     | Preview built slides                           |
+| Script              | Description                                    |
+| ------------------- | ---------------------------------------------- |
+| `npm run dev`       | Start development server (lesson menu)         |
+| `npm run dev -- 01` | Start dev server for lesson 01                 |
+| `npm run build`     | Build all lessons and export PDFs into `dist/` |
+| `npm run export`    | Export slides to PDF                           |
+| `npm run preview`   | Preview built slides                           |
 
 Build tooling, core dependencies (Slidev, Playwright, TypeScript, Vue) and the deploy workflow come from
 [`@workshops.de/slidev-toolkit`](https://github.com/workshops-de/slidev-toolkit). To update them, bump

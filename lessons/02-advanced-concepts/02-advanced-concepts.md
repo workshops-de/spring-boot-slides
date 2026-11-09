@@ -14,7 +14,7 @@ seoMeta:
 # Build configuration
 base: /02-advanced-concepts/
 out: ../../dist/02-advanced-concepts
-theme: "@workshops.de/slidev-theme"
+theme: '@workshops.de/slidev-theme'
 addons:
   - window-mockup
   - slidev-addon-tldraw

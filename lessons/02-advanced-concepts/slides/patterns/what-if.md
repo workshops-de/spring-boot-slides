@@ -32,9 +32,7 @@ class NotificationService {
 
   notify(message: string) {
     this.strategy.send(message);
-    this.observers.forEach(o =>
-      o.update(message)
-    );
+    this.observers.forEach((o) => o.update(message));
   }
 }
 ```
@@ -61,12 +59,12 @@ class NotificationService {
 
 # Anti-Patterns to Avoid
 
-| Anti-Pattern | Problem | Solution |
-|--------------|---------|----------|
-| **God Object** | One class does everything | Split responsibilities |
-| **Spaghetti Code** | No clear structure | Apply appropriate patterns |
-| **Golden Hammer** | Using one pattern everywhere | Choose pattern for the problem |
-| **Premature Optimization** | Patterns before need | Start simple, refactor later |
+| Anti-Pattern               | Problem                      | Solution                       |
+| -------------------------- | ---------------------------- | ------------------------------ |
+| **God Object**             | One class does everything    | Split responsibilities         |
+| **Spaghetti Code**         | No clear structure           | Apply appropriate patterns     |
+| **Golden Hammer**          | Using one pattern everywhere | Choose pattern for the problem |
+| **Premature Optimization** | Patterns before need         | Start simple, refactor later   |
 
 <br>
 
@@ -101,13 +99,7 @@ class NotificationService {
 
 ```typescript
 // Modern approach: Functional composition
-const processUser = pipe(
-  validate,
-  transform,
-  save,
-  notify
-);
+const processUser = pipe(validate, transform, save, notify);
 
 await processUser(userData);
 ```
-

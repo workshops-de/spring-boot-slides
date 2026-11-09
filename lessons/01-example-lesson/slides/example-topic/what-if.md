@@ -52,11 +52,11 @@ try {
 
 # Alternative Approaches
 
-| Approach | Pros | Cons |
-|----------|------|------|
-| **Approach A** | Simple, fast | Limited flexibility |
-| **Approach B** | Flexible, powerful | More complex |
-| **Approach C** | Best performance | Harder to debug |
+| Approach       | Pros               | Cons                |
+| -------------- | ------------------ | ------------------- |
+| **Approach A** | Simple, fast       | Limited flexibility |
+| **Approach B** | Flexible, powerful | More complex        |
+| **Approach C** | Best performance   | Harder to debug     |
 
 <br>
 
@@ -116,5 +116,3 @@ console.log('Enhanced result:', result);
 <div class="text-center mt-8">
   <strong>Stay updated:</strong> Follow the official documentation for new releases
 </div>
-
-

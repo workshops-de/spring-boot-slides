@@ -14,7 +14,7 @@ seoMeta:
 # Build configuration
 base: /01-example-lesson/
 out: ../../dist/01-example-lesson
-theme: "@workshops.de/slidev-theme"
+theme: '@workshops.de/slidev-theme'
 addons:
   - window-mockup
   - slidev-addon-tldraw

@@ -46,7 +46,7 @@ class EventEmitter<T> implements Subject<T> {
   }
 
   notify(data: T): void {
-    this.observers.forEach(obs => obs.update(data));
+    this.observers.forEach((obs) => obs.update(data));
   }
 }
 ```
@@ -65,13 +65,13 @@ const userEvents = new EventEmitter<User>();
 const logger: Observer<User> = {
   update: (user) => {
     console.log('User changed:', user);
-  }
+  },
 };
 
 const analytics: Observer<User> = {
   update: (user) => {
     trackEvent('user_update', user);
-  }
+  },
 };
 
 // Subscribe
@@ -101,4 +101,3 @@ userEvents.notify(currentUser);
 - Pub/sub messaging
 
 </div>
-
