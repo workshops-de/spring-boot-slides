@@ -20,5 +20,11 @@
   },
   "devDependencies": {
     "@workshops.de/slidev-toolkit": "^1.1.3"
+  },
+  "slidev": {
+    "addons": [
+      "window-mockup",
+      "slidev-addon-tldraw"
+    ]
   }
 }
