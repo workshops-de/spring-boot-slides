@@ -1,0 +1,14 @@
+{
+  "extraKnownMarketplaces": {
+    "workshops-de": {
+      "source": {
+        "source": "github",
+        "repo": "workshops-de/claude-plugins"
+      },
+      "autoUpdate": true
+    }
+  },
+  "enabledPlugins": {
+    "workshops-slides@workshops-de": true
+  }
+}
