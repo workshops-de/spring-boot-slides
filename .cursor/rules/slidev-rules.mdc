@@ -4,46 +4,82 @@ globs:
 alwaysApply: true
 ---
 
+<!-- Generated from the slidev-authoring skill in https://github.com/workshops-de/claude-plugins. Edit it there and re-export. -->
+
 ## Structure
 
-- Each topic gets its own file, which gets linked in `/slides.md`
-- Each topic file is saved in /pages/{topic}/{name-of-the-topic}.md
-- A topic can consist of the files (see 4-mat principle)
-  - why.md
-  - how.md
-  - what.md
-  - task.md
-  - what-if.md
-- Each topic starts with a cover slide
-- Each topic ends with a task slide (also a cover with the title of the respective exercise)
+Applies to lessons with `slides_type: slidev`. Each lesson has an entry file named like its folder and
+one folder per topic under `slides/`. A topic follows 4-MAT and consists of these files:
+
+- `why.md`: starts with a cover slide for the topic
+- `what.md`
+- `how.md`
+- `what-if.md`
+- `task.md`: ends the topic with a task slide (a cover with the title of the exercise)
 
 ### Example
 
 ```
-/
-├── slides.md                   # Main slides file
-├── sources.md                  # Sources of the presentation
-├── pages/                      # Topic organization
-│   ├── introduction/           # Topic folder
-│   ├── components/             # Topic folder
-│   └── services/               # Topic folder
-│       ├── why.md              # Topic file
-│       ├── how.md              # Topic file
-│       ├── what.md             # Topic file
-│       ├── task.md             # Topic file
-│       └── what-if.md          # Topic file
-├── components/                 # Reusable slide components
-├── snippets/                   # Code snippets
-└── assets/                     # Images and media
+lessons/
+└── 02-llm-introduction/
+    ├── lesson.yml
+    ├── 02-llm-introduction.md      # Entry file: headmatter + links to the topic files
+    ├── slides/
+    │   └── llm-introduction/       # Topic folder
+    │       ├── why.md
+    │       ├── what.md
+    │       ├── how.md
+    │       ├── what-if.md
+    │       └── task.md
+    └── tasks/
+public/
+└── 02-llm-introduction/            # Images, referenced as /02-llm-introduction/...
 ```
 
-### Link in slides.md
+### Linking topic files in the entry file
+
+The entry file's headmatter (theme, `base`, `out`, addons) links the first topic file with `src`; every
+further file gets its own `src` slide:
 
 ```md
 ---
-src: ./pages/introduction/welcome.md
+theme: '@workshops.de/slidev-theme'
+base: /02-llm-introduction/
+out: ../../dist/02-llm-introduction
+src: ./slides/llm-introduction/why.md
+---
+
+---
+src: ./slides/llm-introduction/what.md
 ---
 ```
+
+### Single-deck repositories
+
+A few repositories hold one single deck instead of lessons (e.g. `ai-software-engineers-slides`):
+`slides.md` in the root links topic files under `pages/<topic>/`, with the same 4-MAT files:
+
+```
+/
+├── slides.md                   # Entry file: headmatter + src links
+├── sources.md
+└── pages/
+    └── services/               # Topic folder
+        ├── why.md
+        ├── what.md
+        ├── how.md
+        ├── what-if.md
+        └── task.md
+```
+
+```md
+---
+src: ./pages/services/why.md
+---
+```
+
+Code highlighting, Mermaid, shortcuts and styles come from the theme; do not add `setup/` or `styles/`
+folders to the repository.
 
 ## Slide
 
@@ -111,7 +147,37 @@ const c = add(1, 2);
 
 ## Layouts
 
-- If a layout repeats during slide, create a new slidev layout and reuse it for other slides
+- **Prefer layouts over custom HTML.** `@workshops.de/slidev-theme` provides:
+  - `cover` - title slide of a deck, `end` - closing slide
+  - `section` / `sub-section` - section dividers
+  - `why`, `little-what`, `what-if`, `task` - the 4-MAT phases (see Didactics)
+  - `default` - regular content
+  - `two-cols`, `two-cols-header` - two columns (text + image, or two code examples)
+  - `image-left` / `image-right` - content next to an image
+  - `ask-me-anything` - Q&A slide
+- Slidev's built-in `center`, `fact`, `quote` and `statement` also work, but without the theme's look;
+  prefer the theme layouts above.
+- Configure a layout with `layoutClass` when needed:
+  ```md
+  ---
+  layout: two-cols
+  layoutClass: gap-16
+  ---
+  ```
+- Use the `::right::` slot for the second column:
+  ```md
+  ---
+  layout: two-cols
+  ---
+
+  # Left column
+
+  ::right::
+
+  # Right column
+  ```
+- If a custom arrangement repeats across slides, turn it into a layout instead of copying HTML.
+- Keep bullet lists short: 5-8 points at most, each fitting on one line.
 
 ## Didactics
 
