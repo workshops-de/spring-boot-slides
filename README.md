@@ -30,9 +30,7 @@ Open http://localhost:3030 to see your slides.
 /
 ├── 00-index.md                      # Main index with links to all lessons
 ├── sources.md                       # Sources and references
-├── package.json                     # Dependencies and scripts
-├── scripts/
-│   └── build-all.sh                 # Build script for all lessons
+├── package.json                     # Dependencies and scripts (build tooling: @workshops.de/slidev-toolkit)
 ├── lessons/
 │   └── 01-example-lesson/           # Lesson folder
 │       ├── lesson.yml               # Lesson metadata (synced to platform)
@@ -135,27 +133,12 @@ git_tag_completed: solution-01-task-name
 
 > **Note**: You can also include markdown content directly in `task.yml` using `body_markdown`, `hint_markdown`, etc., but separate files are recommended for better readability and editor support.
 
-### 6. Update Build Script
+### 6. Build
 
-Add the new lesson to `scripts/build-all.sh`:
-
-```bash
-echo "📄 Building Lesson 02..."
-npx slidev build lessons/02-new-lesson/02-new-lesson.md --out dist/02-new-lesson --base /02-new-lesson/
-```
-
-### 7. Update package.json
-
-Add dev/build scripts:
-
-```json
-{
-  "scripts": {
-    "dev:02": "slidev lessons/02-new-lesson/02-new-lesson.md --open",
-    "build:02": "slidev build lessons/02-new-lesson/02-new-lesson.md --out dist/02-new-lesson"
-  }
-}
-```
+Nothing to register: `npm run build` (the `workshop-slides` CLI from
+[`@workshops.de/slidev-toolkit`](https://github.com/workshops-de/slidev-toolkit)) picks up every
+`lessons/*/*.md` with `base:` and `out:` in its headmatter, builds it into `dist/<lesson>/` and exports
+a PDF. `npm run dev` lists all lessons in an interactive menu (`npm run dev -- 02` starts lesson 02).
 
 ## 🎓 4-MAT Teaching Structure
 
@@ -170,14 +153,17 @@ Each topic follows the 4-MAT learning cycle:
 
 ## 📦 Available Scripts
 
-| Script             | Description                    |
-| ------------------ | ------------------------------ |
-| `npm run dev`      | Start development server       |
-| `npm run dev:01`   | Start dev server for lesson 01 |
-| `npm run build`    | Build all lessons              |
-| `npm run build:01` | Build lesson 01 only           |
-| `npm run export`   | Export slides to PDF           |
-| `npm run preview`  | Preview built slides           |
+| Script                | Description                                    |
+| --------------------- | ---------------------------------------------- |
+| `npm run dev`         | Start development server (lesson menu)         |
+| `npm run dev -- 01`   | Start dev server for lesson 01                 |
+| `npm run build`       | Build all lessons and export PDFs into `dist/` |
+| `npm run export`      | Export slides to PDF                           |
+| `npm run preview`     | Preview built slides                           |
+
+Build tooling, core dependencies (Slidev, Playwright, TypeScript, Vue) and the deploy workflow come from
+[`@workshops.de/slidev-toolkit`](https://github.com/workshops-de/slidev-toolkit). To update them, bump
+that one package.
 
 ## 🔗 Platform Integration
 

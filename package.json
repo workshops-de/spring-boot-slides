@@ -8,23 +8,17 @@
   "private": true,
   "scripts": {
     "start": "slidev",
-    "dev": "./scripts/dev.sh",
-    "build": "./scripts/build-all.sh",
+    "dev": "workshop-slides dev",
+    "build": "workshop-slides build",
     "export": "slidev export",
     "preview": "npx vite preview --outDir dist"
   },
+  "prettier": "@workshops.de/slidev-toolkit/prettier",
   "dependencies": {
-    "@slidev/cli": "53.1.0",
     "@slidev/theme-default": "0.25.0",
-    "@workshops.de/slidev-theme": "2.1.0",
-    "slidev-addon-tldraw": "0.5.1",
-    "slidev-addon-window-mockup": "0.3.1",
-    "vue": "3.5.45"
+    "@workshops.de/slidev-theme": "2.1.0"
   },
   "devDependencies": {
-    "playwright-chromium": "1.65.0",
-    "prettier": "3.9.10",
-    "prettier-plugin-slidev": "1.0.5",
-    "typescript": "^6.0.3"
+    "@workshops.de/slidev-toolkit": "^1.1.0"
   }
 }
